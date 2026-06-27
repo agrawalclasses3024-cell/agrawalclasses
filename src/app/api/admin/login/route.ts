@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -14,19 +13,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
-  const cookieStore = await cookies();
-  cookieStore.set("admin_session", SESSION_SECRET, {
+  const response = NextResponse.json({ success: true });
+  response.cookies.set("admin_session", SESSION_SECRET, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
+    sameSite: "lax",
     maxAge: 60 * 60 * 24,
     path: "/",
   });
-
-  return NextResponse.json({ success: true });
+  return response;
 }
 
 export async function DELETE() {
-  const cookieStore = await cookies();
-  cookieStore.delete("admin_session");
-  return NextResponse.json({ success: true });
+  const response = NextResponse.json({ success: true });
+  response.cookies.set("admin_session", "", { maxAge: 0, path: "/" });
+  return response;
 }

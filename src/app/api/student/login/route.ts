@@ -13,22 +13,23 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
 
     const token = `${student.id}:${process.env.NEXTAUTH_SECRET}`;
-    const cookieStore = await cookies();
-    cookieStore.set("student_session", token, {
+
+    const response = NextResponse.json({ success: true, name: student.name });
+    response.cookies.set("student_session", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
+      sameSite: "lax",
       maxAge: 60 * 60 * 24 * 7,
       path: "/",
     });
-
-    return NextResponse.json({ success: true, name: student.name });
+    return response;
   } catch {
     return NextResponse.json({ error: "Login failed" }, { status: 500 });
   }
 }
 
 export async function DELETE() {
-  const cookieStore = await cookies();
-  cookieStore.delete("student_session");
-  return NextResponse.json({ success: true });
+  const response = NextResponse.json({ success: true });
+  response.cookies.set("student_session", "", { maxAge: 0, path: "/" });
+  return response;
 }
