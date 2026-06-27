@@ -57,11 +57,12 @@ export default function StudentDashboard() {
 
   useEffect(() => {
     fetch("/api/student/me")
-      .then((r) => {
-        if (r.status === 401) router.push("/student/login");
-        return r.json();
+      .then(async (r) => {
+        if (r.status === 401) { router.push("/student/login"); return; }
+        const d = await r.json();
+        setStudent(d);
+        setLoading(false);
       })
-      .then((d) => { setStudent(d); setLoading(false); })
       .catch(() => setLoading(false));
   }, [router]);
 

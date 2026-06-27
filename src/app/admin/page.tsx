@@ -69,8 +69,10 @@ export default function AdminDashboard() {
 
   const fetchAll = async () => {
     setLoading(true);
+    const eqRes = await fetch("/api/admin/enquiries");
+    if (eqRes.status === 401) { router.push("/admin/login"); return; }
     const [eq, ap, en] = await Promise.all([
-      fetch("/api/admin/enquiries").then((r) => { if (r.status === 401) router.push("/admin/login"); return r.json(); }),
+      eqRes.json(),
       fetch("/api/admin/applications").then((r) => r.json()),
       fetch("/api/admin/enrollments").then((r) => r.json()),
     ]);
