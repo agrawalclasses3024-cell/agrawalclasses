@@ -12,5 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/resources`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${base}/student/register`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/student/login`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    // District landing pages
+    { url: `${base}/gopalganj`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/siwan`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/saran`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/east-champaran`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/west-champaran`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 }
