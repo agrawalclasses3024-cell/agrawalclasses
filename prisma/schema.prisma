@@ -25,3 +25,45 @@ model Admin {
   password  String
   createdAt DateTime @default(now())
 }
+
+model Student {
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  phone        String
+  password     String
+  resetToken   String?
+  createdAt    DateTime      @default(now())
+  applications Application[]
+  enrollments  Enrollment[]
+}
+
+model Application {
+  id          Int         @id @default(autoincrement())
+  studentId   Int
+  student     Student     @relation(fields: [studentId], references: [id])
+  course      String
+  mode        String?
+  message     String?
+  status      String      @default("pending")
+  adminNote   String?
+  createdAt   DateTime    @default(now())
+  enrollment  Enrollment?
+}
+
+model Enrollment {
+  id            Int         @id @default(autoincrement())
+  studentId     Int
+  student       Student     @relation(fields: [studentId], references: [id])
+  applicationId Int         @unique
+  application   Application @relation(fields: [applicationId], references: [id])
+  course        String
+  amount        Float
+  paymentMode   String      @default("cash")
+  paymentDate   DateTime
+  startDate     DateTime
+  expiryDate    DateTime
+  status        String      @default("active")
+  notes         String?
+  createdAt     DateTime    @default(now())
+}

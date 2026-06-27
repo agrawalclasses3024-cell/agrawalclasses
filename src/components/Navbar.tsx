@@ -38,8 +38,14 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/courses"
-              className="ml-2 px-5 py-2 bg-[#e8a020] text-white text-sm font-semibold rounded-full hover:bg-[#d4911a] transition-colors"
+              href="/student/login"
+              className="px-4 py-2 border border-[#1a3c5e] text-[#1a3c5e] text-sm font-semibold rounded-full hover:bg-[#1a3c5e] hover:text-white transition-colors"
+            >
+              Student Login
+            </Link>
+            <Link
+              href="/student/register"
+              className="px-5 py-2 bg-[#e8a020] text-white text-sm font-semibold rounded-full hover:bg-[#d4911a] transition-colors"
             >
               Enroll Now
             </Link>
@@ -77,8 +83,15 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/courses"
-              className="mt-2 px-5 py-2 bg-[#e8a020] text-white text-sm font-semibold rounded-full text-center hover:bg-[#d4911a]"
+              href="/student/login"
+              className="px-5 py-2 border border-[#1a3c5e] text-[#1a3c5e] text-sm font-semibold rounded-full text-center"
+              onClick={() => setMenuOpen(false)}
+            >
+              Student Login
+            </Link>
+            <Link
+              href="/student/register"
+              className="px-5 py-2 bg-[#e8a020] text-white text-sm font-semibold rounded-full text-center hover:bg-[#d4911a]"
               onClick={() => setMenuOpen(false)}
             >
               Enroll Now
