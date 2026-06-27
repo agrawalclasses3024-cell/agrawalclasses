@@ -60,7 +60,7 @@ export default function StudentDashboard() {
       .then(async (r) => {
         if (r.status === 401) { router.push("/student/login"); return; }
         const d = await r.json();
-        setStudent(d);
+        setStudent({ ...d.student, enrollments: d.enrollments, applications: d.applications });
         setLoading(false);
       })
       .catch(() => setLoading(false));
