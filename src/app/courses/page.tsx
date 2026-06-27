@@ -2,9 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Courses & Batches | Agrawal Classes by CA Nidhi Agrawal",
+  title: "Commerce Courses Gopalganj | 11th 12th B.Com Classes | CA Nidhi Agrawal",
   description:
-    "Explore Commerce courses for Class 11, 12 & B.Com. Live online, face-to-face, and recorded batch options available.",
+    "Commerce courses for Class 11, 12 & B.Com in Gopalganj Bihar by CA Nidhi Agrawal. Accountancy, Business Studies, Economics — Bihar Board (BSEB) specialist. Online, offline & live batch options.",
+  keywords: [
+    "11th Commerce Classes Gopalganj", "12th Commerce Classes Gopalganj",
+    "11th Commerce Coaching Gopalganj", "12th Commerce Coaching Gopalganj",
+    "BSEB 11th Commerce", "BSEB 12th Commerce",
+    "Commerce Coaching Gopalganj", "Accountancy Classes Gopalganj",
+    "Business Studies Classes Gopalganj", "Economics Classes Gopalganj",
+    "B.Com Coaching Bihar", "12th Commerce Topper Batch",
+    "12th Commerce Crash Course", "Commerce Live Classes Gopalganj",
+  ],
+  alternates: { canonical: "https://www.classesbycanidhiagrawal.in/courses" },
+  openGraph: {
+    title: "Commerce Courses in Gopalganj | 11th 12th B.Com | CA Nidhi Agrawal",
+    description: "Expert Commerce coaching for Class 11, 12 & B.Com in Gopalganj Bihar. Bihar Board specialist.",
+    url: "https://www.classesbycanidhiagrawal.in/courses",
+  },
 };
 
 const courses = [

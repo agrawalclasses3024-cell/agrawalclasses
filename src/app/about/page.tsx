@@ -2,9 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About CA Nidhi Agrawal | Agrawal Classes",
+  title: "About CA Nidhi Agrawal | Best Commerce Teacher Gopalganj Bihar",
   description:
-    "Meet CA Nidhi Agrawal — Chartered Accountant and Commerce educator with 10+ years of experience teaching Class 11, 12 & B.Com students across India.",
+    "Meet CA Nidhi Agrawal — Chartered Accountant & best Commerce teacher in Gopalganj Bihar. 10+ years teaching Class 11, 12 & B.Com. BSEB Commerce specialist. Accountancy, Business Studies, Economics.",
+  keywords: [
+    "CA Nidhi Agrawal", "CA Nidhi Agarwal", "CA Nidhi Agrawal Gopalganj",
+    "Best Commerce Teacher Gopalganj", "Commerce Teacher Bihar",
+    "Chartered Accountant Teacher Gopalganj", "CA Teacher Bihar",
+    "Commerce Educator Gopalganj", "BSEB Commerce Teacher",
+  ],
+  alternates: { canonical: "https://www.classesbycanidhiagrawal.in/about" },
+  openGraph: {
+    title: "About CA Nidhi Agrawal | Best Commerce Teacher in Gopalganj Bihar",
+    description: "CA Nidhi Agrawal — Chartered Accountant and Commerce educator with 10+ years in Gopalganj Bihar.",
+    url: "https://www.classesbycanidhiagrawal.in/about",
+  },
 };
 
 const milestones = [

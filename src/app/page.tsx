@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Best Commerce Coaching in Gopalganj Bihar | CA Nidhi Agrawal",
+  description:
+    "Agrawal Classes — Best Commerce coaching in Gopalganj Bihar by CA Nidhi Agrawal. Expert in Class 11, 12 & B.Com Accountancy, Business Studies, Economics. Bihar Board (BSEB) specialist. Online & Offline classes available.",
+  alternates: { canonical: "https://www.classesbycanidhiagrawal.in" },
+  openGraph: {
+    title: "Best Commerce Coaching in Gopalganj Bihar | CA Nidhi Agrawal",
+    description: "Join 5000+ students. Expert Commerce coaching for Class 11, 12 & B.Com in Gopalganj Bihar.",
+    url: "https://www.classesbycanidhiagrawal.in",
+  },
+};
 
 const stats = [
   { value: "5,000+", label: "Students Taught" },
@@ -49,9 +62,73 @@ const testimonials = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://www.classesbycanidhiagrawal.in/#organization",
+      name: "Agrawal Classes by CA Nidhi Agrawal",
+      url: "https://www.classesbycanidhiagrawal.in",
+      logo: "https://www.classesbycanidhiagrawal.in/logo.png",
+      description: "Best Commerce coaching in Gopalganj Bihar for Class 11, 12 & B.Com. Specialist in Accountancy, Business Studies and Economics for Bihar Board (BSEB).",
+      telephone: "+91-7250185258",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Gopalganj",
+        addressRegion: "Bihar",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        "https://www.youtube.com/@AgrawalClasses",
+        "https://www.instagram.com/agrawalclasses",
+        "https://www.facebook.com/agrawalclasses",
+      ],
+      founder: {
+        "@type": "Person",
+        name: "CA Nidhi Agrawal",
+        jobTitle: "Commerce Teacher & CA",
+        description: "CA Nidhi Agrawal is a Chartered Accountant and Commerce educator based in Gopalganj, Bihar with 10+ years of teaching experience.",
+      },
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.classesbycanidhiagrawal.in/#localbusiness",
+      name: "Agrawal Classes",
+      image: "https://www.classesbycanidhiagrawal.in/og-image.jpg",
+      url: "https://www.classesbycanidhiagrawal.in",
+      telephone: "+91-7250185258",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Gopalganj",
+        addressRegion: "Bihar",
+        postalCode: "841428",
+        addressCountry: "IN",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: 26.4672, longitude: 84.4394 },
+      openingHoursSpecification: [
+        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], opens: "07:00", closes: "20:00" },
+      ],
+      priceRange: "₹₹",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.classesbycanidhiagrawal.in/#website",
+      url: "https://www.classesbycanidhiagrawal.in",
+      name: "Agrawal Classes by CA Nidhi Agrawal",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://www.classesbycanidhiagrawal.in/courses?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#1a3c5e] to-[#0f2540] text-white py-20 px-4">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">

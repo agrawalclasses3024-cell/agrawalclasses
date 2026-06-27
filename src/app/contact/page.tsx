@@ -2,9 +2,20 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Agrawal Classes by CA Nidhi Agrawal",
+  title: "Contact Agrawal Classes Gopalganj | Enquiry & Admission",
   description:
-    "Get in touch with Agrawal Classes for course enquiries, admissions, and more. WhatsApp, email, or visit us at Gopalganj, Bihar.",
+    "Contact Agrawal Classes Gopalganj for Commerce course enquiry and admission. Call, WhatsApp or visit CA Nidhi Agrawal at Gopalganj, Bihar. 11th, 12th, B.Com Commerce classes.",
+  keywords: [
+    "Agrawal Classes Contact", "Commerce Classes Gopalganj Admission",
+    "Commerce Coaching Enquiry Gopalganj", "CA Nidhi Agrawal Contact",
+    "Gopalganj Commerce Classes Admission", "BSEB Commerce Coaching Gopalganj",
+  ],
+  alternates: { canonical: "https://www.classesbycanidhiagrawal.in/contact" },
+  openGraph: {
+    title: "Contact Agrawal Classes | Commerce Coaching Enquiry Gopalganj",
+    description: "Enquire about Commerce coaching in Gopalganj Bihar. Call or WhatsApp CA Nidhi Agrawal.",
+    url: "https://www.classesbycanidhiagrawal.in/contact",
+  },
 };
 
 export default function ContactPage() {
