@@ -6,10 +6,25 @@ import Link from "next/link";
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setLoading(true);
+    const res = await fetch("/api/student/forgot-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    if (res.ok) {
+      setSubmitted(true);
+    } else {
+      const d = await res.json();
+      setError(d.error || "Something went wrong. Please try again.");
+    }
+    setLoading(false);
   };
 
   return (
@@ -27,8 +42,11 @@ export default function ForgotPasswordPage() {
             <>
               <h1 className="text-2xl font-bold text-gray-800 mb-1">Forgot Password?</h1>
               <p className="text-sm text-gray-500 mb-6">
-                Enter your registered email. We&apos;ll send reset instructions.
+                Enter your registered email. We&apos;ll send a reset link.
               </p>
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl">{error}</div>
+              )}
               <form onSubmit={submit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
@@ -40,10 +58,10 @@ export default function ForgotPasswordPage() {
                   />
                 </div>
                 <button
-                  type="submit"
-                  className="w-full py-3 bg-[#1a3c5e] text-white font-semibold rounded-xl hover:bg-[#0f2540] transition-colors"
+                  type="submit" disabled={loading}
+                  className="w-full py-3 bg-[#1a3c5e] text-white font-semibold rounded-xl hover:bg-[#0f2540] transition-colors disabled:opacity-60"
                 >
-                  Send Reset Link
+                  {loading ? "Sending..." : "Send Reset Link"}
                 </button>
               </form>
             </>
@@ -51,11 +69,11 @@ export default function ForgotPasswordPage() {
             <div className="text-center py-4">
               <div className="text-5xl mb-4">📧</div>
               <h2 className="text-xl font-bold text-gray-800 mb-2">Check Your Email</h2>
-              <p className="text-sm text-gray-500 mb-2">
-                If <strong>{email}</strong> is registered, you will receive a password reset link shortly.
+              <p className="text-sm text-gray-500 mb-1">
+                If <strong>{email}</strong> is registered with us, a password reset link has been sent.
               </p>
               <p className="text-xs text-gray-400 mb-6">
-                (Email service will be configured soon. Please contact us on WhatsApp for immediate help.)
+                Check your spam/junk folder if you don&apos;t see it in a few minutes.
               </p>
               <a
                 href="https://wa.me/917250185258"
@@ -63,7 +81,7 @@ export default function ForgotPasswordPage() {
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-2.5 bg-green-500 text-white text-sm font-semibold rounded-full hover:bg-green-600 transition-colors"
               >
-                Contact on WhatsApp
+                Need help? WhatsApp us
               </a>
             </div>
           )}
